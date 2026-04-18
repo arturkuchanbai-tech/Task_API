@@ -1,6 +1,11 @@
-from django.urls import path
-from . views import TaskDetailSerializer,TaskListSerializer
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import TodoViewSet
+router = DefaultRouter()
+router.register(r'todos', TodoViewSet)
+
 urlpatterns = [
-    path('task/',TaskListSerializer),
-    path('<int:id>/',TaskDetailSerializer)
+    path('', include(router.urls))
 ]
+
+

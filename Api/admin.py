@@ -1,3 +1,3 @@
 from django.contrib import admin
-from .models import Task
-admin.register(Task)
+from .models import Todo
+admin.site.register(Todo)

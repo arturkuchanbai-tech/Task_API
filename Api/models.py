@@ -1,9 +1,12 @@
 from django.db import models
-class Task(models.Model):
+from django.contrib.auth.models import User
+
+class Todo(models.Model):
+    user =models.ForeignKey(User, on_delete=models.CASCADE, related_name='todos')
     title = models.CharField(max_length=100)
-    description = models.TextField(blank=True,null=True)
+    description = models.TextField(blank=True, null=True)
     completed = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
+    create = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
